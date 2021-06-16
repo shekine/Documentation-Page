@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+      <main id="main-doc">
+  <nav id="navbar">
+    <header>
+      <h1>Flexbox Basics</h1>
+    </header>
+    <a class="nav-link" href="#What_Is_Flexbox">What is Flexbox</a>
+    <a class="nav-link" href="#Getting_Started_With_Flex">Getting Started With Flex</a>
+    <a class="nav-link" href="#Structuring_Your_Flexbox">Structuring Your Flexbox</a>
+    <a class="nav-link" href="#Wrapping_Flex_Items">Wrapping Flex Items</a>
+    <a class="nav-link" href="#Rearranging_Flex_Items">Rearranging Flex Items</a>
+    <a class="nav-link" href="#Further_Resources">Further Resources</a>
+  </nav>
+
+  <div class='wrapper'>
+
+    <h1 class="hide-header">Flexbox Basics</h1>
+
+    <section class="main-section" id="What_Is_Flexbox">
+      <header>What is Flexbox</header>
+      <p>Flexbox is a set of simple CSS rules that allow you to further manipulate the order and structure of your web design. There are other complementary methods such as float/clear, grid, absolute positioning, but flexbox should be in every coder's repertoire. This tutorial is to help you get your feet wet</p>
+    </section>
+
+    <section class="main-section" id="Getting_Started_With_Flex">
+      <header>Getting Started With Flex</header>
+      <p>The very first thing that you need to do to start working with flexbox is to make your container a flex container. To do this, we utilize the following code in our container's CSS: <code>display: flex;</code></p>
+      <p>Congratulations! You have a flex-container. What does this mean? All of the directly descended children of your flex container are not flex items. We can affect the layout, order, and even size with a few simple lines of code. We can even embed a flexbox inside of another flexbox.</p>
+      <div class="container">
+        <div class="normal-container">
+          <div class="normal-item"></div>
+          <div class="normal-item"></div>
+          <div class="normal-item"></div>
+        </div>
+        <div class="flex-container">
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+        </div>
+      </div>
+      <p>What happens to my flex items? Well, they still live in your flex container and they are still completely customizable. If there are many of them, they will now be displayed in a row because that is the primary state for flex items. To use a flex container and still have columns, you can define <code>flex-direction: column;</code>. This can be a quick way to change up your layout. Flex direction values are:</p>
+      <ul>
+        <li>row - default</li>
+        <li>row-reverse - arranged in a row, but order is reversed</li>
+        <li>column - arranged in a column in order of the HTML</li>
+        <li>column-reverse - arranged in a column, but the order is reversed</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="Structuring_Your_Flexbox">
+      <header>Structuring Your Flexbox</header>
+      <p>My go to use of flexbox is centering items within their container. Let's try centering an item both vertically and horizontally.</p>
+      <div class="container">
+        <div class="flex-container">
+          <div class="flex-item"></div>
+        </div>
+      </div>
+      <p>Say we have an item inside of a container that we have designated as a flex container. As soon as we designated our container as flex, all of the flex items within will shift to be displayed as a row. Because we only have one item, this will not be apparent, but still important to know. Our <i>main axis</i> right now is horizontal. To adjust the horizontal placement of our flex item, we use justify-content to adjust its location on the main axis. Well, we want it center, so we use <code>justify-content: center;</code></p>
+      <div class="container">
+        <div class="justify-container">
+          <div class="justify-item"></div>
+        </div>
+      </div>
+      <p>Next we want to center it vertically so it is front and center in our flex container. We can accomplish this by combining our <code>justify-content: center;</code> property with the property <code>align-items: center;</code>. Remember our <i>main axis</i> is horizontal by default and being affected by <code>justify-content</code>. Our <i>cross axis</i> is vertical by default and is affected by <code>align-items</code>.</p>
+      <div class="container">
+        <div class="align-items-container">
+          <div class="align-items-item"></div>
+        </div>
+      </div>
+      <p>In addition to <code>center</code>, justify content can also take the values</p>
+      <ul>
+        <li>flex-start - moves items to be grouped at start of container</li>
+        <li>flex-end - moves items to be grouped at end of container</li>
+        <li>space-between - moves items so first and last items are at edges of container and remainder spaced evenly</li>
+        <li>space-around - Items evenly spaced except half space before first item and after last item</li>
+        <li>space-evenly - Items are spread out with an equal amount of space between all.</li>
+      </ul>
+      <p>Align items also accepts and will default to <code>stretch</code> which makes the item stretch to fit the container unless an explicit height is listed.</p>
+
+    </section>
+
+    <section class="main-section" id="Wrapping_Flex_Items">
+      <header>Wrapping Flex Items</header>
+      <p>Occasionally, you might find that your flex items do not fit comfortablly in their flex container. Because flexbox has a default <code>flex-shrink: 1;</code>, they will squeeze all onto the same row (or column if the flex-direction has been set to column). This is responsive, but can ruin your layout and contents of those items may become difficult to read or access. If we adjust flex-shrink, we still may get items overflowing off the page. We can solve this with the <code>flex-wrap</code> property. Flex wrap has three possible values: </p>
+      <ul>
+        <li>nowrap - the default value which gives the effects described above</li>
+        <li>wrap - items will move down to the next column/row when in overflow</li>
+        <li>wrap-reverse - similar to wrap, but the order places the overflow items on the current row/column and moves the others to the next row/column</li>
+      </ul>
+      <p>Below are a normal flex container (left) and one with flex wrap set to wrap (right). Note how none of the flex items have been shrunk to fit. </p>
+      <div class="container">
+        <div class="flex-container">
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+        </div>
+        <div class="flex-wrap-container flex-container">
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section" id="Rearranging_Flex_Items">
+      <header>Rearranging Flex Items</header>
+      <p>In addition to the order changes that can be made using flex direction, it is also possible to change the order of our flex items. To do this, we target the flex item itself, NOT the container. We can use the property<code>order</code> followed by a positive or negative integer. The lower the number, the higher its priority in the ordering of all of the flex items. So a flex item with <code>order: 6;</code> will be listed after an item with <code>order: 3;</code>. The default order for any particular flex item is 0.</p>
+      <p>Below we have a flex container where I have changed the color of two boxes to keep track of them (left). On the right, the order property has been changed for the orange and pink divs with values of -1 and 10 respectively.</p>
+      <div class="container">
+        <div class="flex-wrap-container flex-container">
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item item-one"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item item-seven"></div>
+          <div class="flex-item"></div>
+        </div>
+        <div class="flex-wrap-container flex-container">
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item item-one-ordered"></div>
+          <div class="flex-item"></div>
+          <div class="flex-item item-seven-ordered"></div>
+          <div class="flex-item"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="main-section resources" id="Further_Resources">
+      <header>Further Resources</header>
+      <p>For more information about flexbox, I recommend CSS-Tricks's <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"><i>A Complete Guide to Flexbox</i></a>, and if you are more of a hands-learner, try out <a href="http://flexboxfroggy.com/">Flexbox Froggy</a> which has you use flexbox in a simple and fun minigame that explains all of the basics very elegantly.</p>
+    </section>
+  </div>
+</main>
+    <script src="script.js"></script>
+  </body>
+</html>
